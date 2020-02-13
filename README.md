@@ -4,7 +4,7 @@
 
 En los ficheros de backupdb y backupweb son los script de python3 para ejecutar backups.
 
-Hay con crontab que ejecuta esto todos los dias y cuando tiene mas de 15 dias los elimina.
+Hay con crontab que ejecuta esto todos los días y cuando tiene mas de 15 días los elimina.
 
 
 ## EndPoints
@@ -14,7 +14,7 @@ Moodle esta instalado en la url:
 
 https://moodle.startpime.com/
 
-Grafa con la monitorización del servidor
+Grafana con la monitorización del servidor
 
 https://grafana.startpime.com
 
