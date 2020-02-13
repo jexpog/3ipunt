@@ -31,6 +31,14 @@ Prometheus lo podemos configurar para las métricas obtener lo que deseamos.
 
 - MariaDB 10.1.44
 
+## Ansible
+
+He creado un role de ansible para la instalación inicial mariadb + php + apache.
+
+descarga el cms y lo descomprime en la ruta indicada.
+
+
+
 
 
 
