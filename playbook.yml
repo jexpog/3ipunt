@@ -1,0 +1,7 @@
+- name: Install moodle
+  hosts: all
+  become: yes
+  tasks:
+
+    - include_role:
+        name: moodle

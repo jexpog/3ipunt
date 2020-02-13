@@ -1,0 +1,74 @@
+---
+# tasks file for moodle
+- name: Install apache and php
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apache2 
+    - php 
+    - mariadb-server
+    - php-curl
+    - php-gd
+    - php-intl
+    - php-mbstring
+    - php-soap
+    - php-xml
+    - php-xmlrpc
+    - php-zip
+    - python-apt
+    - python-pymysql
+    - python3-apt
+    - python3-pymysql
+    - unzip
+
+- name: Start mariadb server
+  systemd:
+    name: mariadb
+    state: started
+    enabled: yes   
+
+- name: Mysql root pass
+  mysql_user:
+    name: root
+    password: root
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: Create user mysql
+  mysql_user:
+    name: usermoodle
+    password: passmoodle
+    login_user: root
+    login_password: root
+    priv: '*.*:ALL,GRANT'
+    state: present
+
+- name: Create database
+  mysql_db: 
+    login_user: usermoodle
+    login_password: passmoodle
+    name: moodle
+    state: present    
+
+- name: Download moodle
+  get_url:
+    url: https://download.moodle.org/download.php/stable38/moodle-latest-38.zip
+    dest: /tmp
+    mode: 777
+
+- name: Extract moodle
+  unarchive:
+    src: /tmp/moodle-latest-38.zip
+    dest: /var/www/html
+    remote_src: yes
+
+- name: Start apache2 Server
+  systemd:
+    name: apache2
+    state: started
+    enabled: yes  
+
+
+    
+      
+
