@@ -1,0 +1,9 @@
+<VirtualHost *:80>
+  ServerName prometheus.startpime.com
+  RewriteEngine on
+  RewriteRule ^/?$ /prometheus/ [R=permanent,L]
+  <Location "/prometheus">
+    ProxyPass http://localhost:9090
+  </Location>
+  ProxyPassReverse /prometheus http://localhost:9090
+</VirtualHost>
