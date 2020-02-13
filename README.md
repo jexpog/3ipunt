@@ -19,7 +19,7 @@ Grafa con la monitorización del servidor
 https://grafana.startpime.com
 
 Vereis que hay mas virtualhost en concreto prometheus.
-Con prometheus sacamos las metricas luego las mostramos en grafana. 
+Con prometheus sacamos las métricas luego las mostramos en grafana. 
 
 Prometheus lo podemos configurar para las métricas obtener lo que deseamos.
 
