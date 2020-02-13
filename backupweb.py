@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import os, time, shutil, sys, tarfile, subprocess, traceback, datetime
 
 def controlFolder():
@@ -14,14 +12,17 @@ def controlFolder():
 
 
 def backupWeb():
+    locdir = "/var/www/html/"
+    remdir = "/var/backup_web/backupweb"
     try:
         timestamp = str(int(time.time()))
-        tar = tarfile.open("/var/backup_web/backupweb"+timestamp+".bz2", "w:bz2")
-        for filedir in os.listdir("/var/www/html/"):
-            tar.add(os.path.join("/var/www/html/", filedir), arcname=filedir)
+        tar = tarfile.open(remdir+timestamp+".bz2", "w:bz2")
+        for filedir in os.listdir(locdir):
+            tar.add(os.path.join(locdir, filedir), arcname=filedir)
         tar.close()
+        print("Backup done")
     except:
-        print("Error while creating tar archive: backupweb")
+        print("Backup web failed")
         return False
     return "/var/backup_web/backupweb"+timestamp
 
@@ -32,4 +33,5 @@ if __name__ == '__main__':
     controlFolder()
     # Create DB
     backupWeb()
+
 
