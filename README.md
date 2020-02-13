@@ -4,6 +4,8 @@
 
 En los ficheros de backupdb y backupweb son los script de python3 para ejecutar backups.
 
+Hay con crontab que ejecuta esto todos los dias y cuando tiene mas de 15 dias los elimina.
+
 
 ## EndPoints
 
